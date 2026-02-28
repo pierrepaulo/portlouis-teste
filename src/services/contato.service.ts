@@ -14,3 +14,7 @@ export async function update(id: number, data: UpdateContatoDTO): Promise<Contat
   if (!existing) return null;
   return repository.update(id, data);
 }
+
+export async function remove(id: number): Promise<boolean> {
+  return repository.remove(id);
+}

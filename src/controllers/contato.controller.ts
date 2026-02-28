@@ -23,3 +23,15 @@ export async function update(req: Request, res: Response): Promise<void> {
 
   res.status(200).json(contato);
 }
+
+export async function remove(req: Request, res: Response): Promise<void> {
+  const id = Number(req.params.id);
+  const deleted = await service.remove(id);
+
+  if (!deleted) {
+    res.status(404).json({ error: "Contato não encontrado" });
+    return;
+  }
+
+  res.status(204).send();
+}

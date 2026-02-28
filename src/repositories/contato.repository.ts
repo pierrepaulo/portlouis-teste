@@ -50,3 +50,11 @@ export async function update(id: number, data: UpdateContatoDTO): Promise<Contat
 
   return findById(id);
 }
+
+export async function remove(id: number): Promise<boolean> {
+  const [result] = await pool.query<ResultSetHeader>(
+    "DELETE FROM contatos WHERE id = ?",
+    [id]
+  );
+  return result.affectedRows > 0;
+}

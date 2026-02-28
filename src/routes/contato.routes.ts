@@ -7,5 +7,6 @@ const router = Router();
 router.get("/contatos", controller.getAll);
 router.post("/contatos", validateCreateContato, controller.create);
 router.patch("/contatos/:id", validateUpdateContato, controller.update);
+router.delete("/contatos/:id", controller.remove);
 
 export default router;
