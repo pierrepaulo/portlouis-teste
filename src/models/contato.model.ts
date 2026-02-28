@@ -9,3 +9,8 @@ export interface CreateContatoDTO {
   nome: string;
   telefone: string;
 }
+
+export interface UpdateContatoDTO {
+  nome?: string;
+  telefone?: string;
+}

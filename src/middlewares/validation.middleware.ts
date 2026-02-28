@@ -25,3 +25,19 @@ export function validateCreateContato(req: Request, res: Response, next: NextFun
 
   next();
 }
+
+export function validateUpdateContato(req: Request, res: Response, next: NextFunction): void {
+  const { nome, telefone } = req.body;
+
+  if (nome !== undefined && !isValidNome(nome)) {
+    res.status(400).json({ error: "Nome deve ter pelo menos 2 palavras, cada uma com no mínimo 3 caracteres" });
+    return;
+  }
+
+  if (telefone !== undefined && typeof telefone !== "string") {
+    res.status(400).json({ error: "Telefone deve ser uma string" });
+    return;
+  }
+
+  next();
+}

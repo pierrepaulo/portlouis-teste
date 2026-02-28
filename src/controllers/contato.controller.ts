@@ -11,3 +11,15 @@ export async function create(req: Request, res: Response): Promise<void> {
   const contato = await service.create({ nome, telefone });
   res.status(201).json(contato);
 }
+
+export async function update(req: Request, res: Response): Promise<void> {
+  const id = Number(req.params.id);
+  const contato = await service.update(id, req.body);
+
+  if (!contato) {
+    res.status(404).json({ error: "Contato não encontrado" });
+    return;
+  }
+
+  res.status(200).json(contato);
+}
